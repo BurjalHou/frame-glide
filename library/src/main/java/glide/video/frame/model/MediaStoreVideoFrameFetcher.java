@@ -25,8 +25,8 @@ public class MediaStoreVideoFrameFetcher implements DataFetcher<Bitmap> {
 
     private MediaMetadataRetriever mediaMetadataRetriever;
 
-    public MediaStoreVideoFrameFetcher(Context context,
-                                       VideoFrame videoFrame) {
+    public MediaStoreVideoFrameFetcher(@NonNull Context context,
+                                       @NonNull VideoFrame videoFrame) {
         this.context = context;
         this.videoFrame = videoFrame;
     }
@@ -66,7 +66,7 @@ public class MediaStoreVideoFrameFetcher implements DataFetcher<Bitmap> {
         mediaMetadataRetriever = new MediaMetadataRetriever();
         if (!TextUtils.isEmpty(videoFrame.path)) {
             mediaMetadataRetriever.setDataSource(videoFrame.path);
-        } else if (null != videoFrame.path) {
+        } else if (null != videoFrame.uri) {
             mediaMetadataRetriever.setDataSource(context, videoFrame.uri);
         }
     }

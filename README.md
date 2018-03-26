@@ -8,7 +8,7 @@ Glide本地视频帧选择插件
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 ```
 
-2. **为 `Glide` 添加 `ModelLoader` **
+2. 为 `Glide` 添加 `ModelLoader`
 ```java
 Glide.get(/*Context*/context)
                 .getRegistry()
@@ -17,6 +17,15 @@ Glide.get(/*Context*/context)
                         new MediaStoreVideoFrameLoader.Factory(/*context*/context));
 ```
 
+3. 通过 `Glide` 加载视频帧
+```java
+Glide.with(this)
+                .load(new VideoFrame.Builder()
+                        .path(/*path*/path)
+                        .percent(/*percent*/percent)
+                        .build())
+                .into(ivFrame);
+```
 
 ## 关于 `VideoFrame`
 
